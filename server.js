@@ -4,8 +4,8 @@ var app = express();
 var mongojs = require("mongojs");
 //var db = mongojs("employeelist", ["employeelist"]);
 
-//var db = mongojs("user1:user123@ds135797.mlab.com:35797/employeelist", ["employeelist"]);
-var db = mongojs("employee", ["employees"]);
+var db = mongojs("user1:user123@ds135797.mlab.com:35797/contactlist", ["employees"]);
+//var db = mongojs("employee", ["employees"]);
 
 var bodyParser = require("body-parser");
 var fs = require("fs-extra");
@@ -119,6 +119,6 @@ app.put("/employeelist/:id", function(req, res){
 	}); 
 });
 
-app.listen(3000, function(){
-  console.log('listening on 3000');
+app.listen(3001, function(){
+  console.log('listening on 3001');
 });
