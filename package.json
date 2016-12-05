@@ -1,0 +1,15 @@
+{
+  "node-main": "server.js",
+  "name": "Contacts",
+  "nodejs": "true",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "connect-busboy": "0.0.2",
+    "express": "^4.14.0",
+    "fs-extra": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "mongojs": "^2.4.0",
+    "multer": "^1.2.0",
+    "nodemailer": "^0.7.1"
+  }
+}

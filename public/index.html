@@ -1,0 +1,65 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+	<head>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<title>Employee list app</title>
+	</head>
+	<body>
+		<div class="container" ng-controller="AppCtrl">
+			<h1>Employee list app</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Contact No.</th>
+						<th>Birth Date</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input class="form-control" ng-model="employee.employee_name"  required></td>
+						<td><input class="form-control" ng-model="employee.employee_email"  required></td>
+						<td><input class="form-control" ng-model="employee.employee_conteact_no"  required></td>
+						<td><input class="form-control" ng-model="employee.employee_dob"  required></td>
+						<td>
+							<!--<input type="file" id="file" name="file"/>-->
+							<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+
+							<!--<button ng-click="angular.element(this).scope().uploadFile(this.files)">Add</button>-->
+						</td>
+						<td>
+							<button class="btn btn-primary" ng-click="addEmployee();">Add Employee</button>
+							&nbsp;&nbsp;<button class="btn btn-info" ng-click="updateEmployee(employee._id);">Update</button>
+						</td>
+					</tr>
+					
+					<tr ng-repeat="employee in employeelist">
+						<td>{{employee.employee_name}}</td>
+						<td>{{employee.employee_email}}</td>
+						<td>{{employee.employee_conteact_no}}</td>
+						<td>{{employee.employee_dob | date}}</td>
+						<td>
+							<img ng-if="employee.employee_img === undefined || employee.employee_img == ''" ng-src="{{basePath + 'avtaar.png'}}" width="80px">
+							<img ng-if="employee.employee_img !== undefined && employee.employee_img != ''" ng-src="{{basePath + employee.employee_img}}" width="80px">
+							
+						</td>
+						<td>
+							<button class="btn btn-danger" ng-click="removeEmployee(employee._id);">Remove</button>
+							&nbsp;&nbsp;<button class="btn btn-info" ng-click="editEmployee(employee._id);">Edit</button>
+						</td>
+					</tr>
+				</tbody>
+			<table>
+		</div>
+			<!-- <input ng-model="test">
+			{{test}} -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+		<script src="controllers/controller.js"></script>
+	</body>
+</html>
